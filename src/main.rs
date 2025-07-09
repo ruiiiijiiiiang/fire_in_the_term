@@ -38,17 +38,17 @@ impl App {
     fn new(width: usize, height: usize) -> App {
         // Define a gradient of characters, ordered from coolest to hottest.
         // The first few are spaces or very light to minimize "smoke" appearance.
-        let char_map = vec![' ', '.', ',', '\'', '"', '~', '^', 'o', 'O', '*', '0', 'M'];
+        let char_map = vec![' ', '.', '\'', '`', '"', '~', '^', 'o', 'O', '*', '0', 'M'];
 
         // Define a gradient of colors, ordered from coolest to hottest.
         // More vibrant flame colors, fewer dark transition steps.
         let color_map = vec![
             Color::Black,              // For very low/no heat (background)
-            Color::Rgb(100, 0, 0),     // Deep red, subtle embers
-            Color::Rgb(175, 0, 0),     // Red
-            Color::Rgb(255, 75, 50),   // Orange-Red
-            Color::Rgb(255, 150, 75),  // Dark Orange
-            Color::Rgb(255, 175, 100), // Orange
+            Color::Rgb(150, 0, 0),     // Deep red, subtle embers
+            Color::Rgb(255, 0, 0),     // Red
+            Color::Rgb(255, 125, 50),  // Orange-Red
+            Color::Rgb(255, 175, 75),  // Dark Orange
+            Color::Rgb(255, 200, 100), // Orange
             Color::Yellow,             // Yellow
             Color::Rgb(255, 255, 100), // Light Yellow
             Color::White,              // White, very hot core
@@ -135,7 +135,7 @@ impl App {
             } else {
                 // Ensure some heat decays completely at the bottom if not reignited
                 next_grid[log_row][x] =
-                    next_grid[log_row][x].saturating_sub(rand::random_range(0..=5)); // Faster decay at bottom
+                    next_grid[log_row][x].saturating_sub(rand::random_range(5..=10)); // Faster decay at bottom
             }
         }
 
@@ -192,10 +192,7 @@ fn run_app<B: Backend>(terminal: &mut Terminal<B>, mut app: App) -> io::Result<(
             let area = f.area(); // Get the current size of the terminal frame
 
             // Create a main block with borders and a title for the fireplace.
-            let block = Block::default()
-                .borders(Borders::ALL)
-                .title(" Dynamic ASCII Fireplace (Press 'q' to quit) ")
-                .title_alignment(Alignment::Center);
+            let block = Block::default().borders(Borders::ALL);
 
             // Render the main block to the entire frame area.
             f.render_widget(&block, area);
