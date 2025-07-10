@@ -2,6 +2,11 @@
 name = "fire_in_the_term"
 version = "0.1.0"
 edition = "2024"
+authors = ["Rui Jiang me@ruijiang.me"]
+license = "MIT"
+description = "Light your terminal on fire"
+readme = "README.md"
+repository = "https://github.com/ruiiiijiiiiang/fire_in_the_term"
 
 [[bin]]
 name = "fitt"
