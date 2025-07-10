@@ -1,7 +1,11 @@
 [package]
-name = "fireplace"
+name = "fire_in_the_term"
 version = "0.1.0"
 edition = "2024"
+
+[[bin]]
+name = "fitt"
+path = "src/main.rs"
 
 [dependencies]
 crossterm = "0.29.0"
