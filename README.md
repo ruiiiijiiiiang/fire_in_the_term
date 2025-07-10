@@ -12,4 +12,4 @@ Then type `fitt` to watch the world burn.
 
 ![](./demo.gif)
 
-[^note]: Press Q to quit.
+Press Q to quit.
