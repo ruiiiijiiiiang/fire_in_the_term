@@ -137,7 +137,7 @@ impl App {
         self.fire_grid = next_grid;
     }
 
-    fn render_fire(&self) -> Text {
+    fn render_fire(&self) -> Text<'_> {
         let mut lines = Vec::with_capacity(self.height);
 
         for y in 0..self.height {
